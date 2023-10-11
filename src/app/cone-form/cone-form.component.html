@@ -1,0 +1,17 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <h1 class="form__title">Выберите параметры конуса:</h1>
+  <div class="form__control">
+    <label>height:</label>
+    <input type="number" placeholder="0" formControlName="height" />
+  </div>
+  <div class="form__control">
+    <label>radius:</label>
+    <input type="number" placeholder="0" formControlName="radius" />
+  </div>
+  <div class="form__control">
+    <label>number of segments:</label>
+    <input type="number" placeholder="0" formControlName="segments" />
+  </div>
+  <button class="form__button" type="submit">Отправить</button>
+</form>
+<!--Сделать валидаторы, обязательное заполнение!-->
