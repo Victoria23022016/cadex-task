@@ -27,9 +27,9 @@ export class InMemoryDataService implements InMemoryDbService {
         return params.radius * Math.sin(2 * Math.PI * (i / params.segments));
       }
 
-      const coordinations = [];
+      const coordinates = [];
       for (let i = 0; i < params.segments; i++) {
-        coordinations.push(
+        coordinates.push(
           0,
           0,
           params.height,
@@ -41,7 +41,7 @@ export class InMemoryDataService implements InMemoryDbService {
           0
         );
       }
-      return coordinations;
+      return coordinates;
     };
 
     const coordinates = calc(params[0]);

@@ -1,4 +1,3 @@
-<h1>Конус в 3D</h1>
-<app-cone-form (onAdd)="onUpdate($event)"></app-cone-form>
-<h2>3D:</h2>
-<!--<canvas #forCanvas></canvas>-->
+<h1 class="main__title">Конус</h1>
+<app-cone-form (onAdd)="onUpdate()"></app-cone-form>
+<app-cone-view [coordinates]="coordinates"></app-cone-view>

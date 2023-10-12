@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
+import { Observable } from 'rxjs';
 
 export interface Params {
   id: number;
@@ -9,37 +8,21 @@ export interface Params {
   segments: number;
 }
 
-export interface Triangle {
-  a: {};
-  p: {};
-  p1: {};
-}
-
 @Injectable({
   providedIn: 'root',
 })
 export class ConeService {
-  URL = 'api/params';
-  URLcoordinations = 'api/coordinations';
-  httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-  };
+  params: Params;
 
-  constructor(private _http: HttpClient) {}
-
-  getParams(): Observable<Params> {
-    return this._http.get<Params>(this.URL);
+  putParams(value: Params): void {
+    this.params = value;
   }
 
-  getCalc(): Observable<number> {
-    return this._http.get<number>(this.URLcoordinations);
+  getCalc(): number[] {
+    return this.makeCalc(this.params);
   }
 
-  putParams(params: Params) {
-    return this._http.put<Params>(this.URL, params);
-  }
-
-  onCalc(params: Params) {
+  makeCalc(params: Params): number[] {
     function calcx(i: number) {
       return params.radius * Math.cos(2 * Math.PI * (i / params.segments));
     }
@@ -48,9 +31,9 @@ export class ConeService {
       return params.radius * Math.sin(2 * Math.PI * (i / params.segments));
     }
 
-    const coordinations = [];
+    const coordinates = [];
     for (let i = 0; i < params.segments; i++) {
-      coordinations.push(
+      coordinates.push(
         0,
         0,
         params.height,
@@ -62,6 +45,6 @@ export class ConeService {
         0
       );
     }
-    return coordinations;
+    return coordinates;
   }
 }
