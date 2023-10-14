@@ -1,17 +1,36 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
   <h1 class="form__title">Выберите параметры конуса:</h1>
   <div class="form__control">
-    <label>height:</label>
+    <label>Высота:</label>
     <input type="number" placeholder="0" formControlName="height" />
+    <div
+      class="form__validation"
+      *ngIf="form.get('height')?.invalid && form.get('height')?.touched"
+    >
+      <small class="form__error">*Необходимо заполнить поле</small>
+    </div>
   </div>
   <div class="form__control">
-    <label>radius:</label>
+    <label>Радиус:</label>
     <input type="number" placeholder="0" formControlName="radius" />
+    <div
+      class="form__validation"
+      *ngIf="form.get('radius')?.invalid && form.get('radius')?.touched"
+    >
+      <small class="form__error">*Необходимо заполнить поле</small>
+    </div>
   </div>
   <div class="form__control">
-    <label>number of segments:</label>
+    <label>Количество сегментов:</label>
     <input type="number" placeholder="0" formControlName="segments" />
+    <div
+      class="form__validation"
+      *ngIf="form.get('segments')?.invalid && form.get('segments')?.touched"
+    >
+      <small class="form__error">*Необходимо заполнить поле</small>
+    </div>
   </div>
-  <button class="form__button" type="submit">Отправить</button>
+  <button class="form__button" type="submit" [disabled]="form.invalid">
+    смотреть
+  </button>
 </form>
-<!--Сделать валидаторы, обязательное заполнение!-->
