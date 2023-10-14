@@ -16,18 +16,19 @@ import * as THREE from 'three';
 })
 export class ConeViewComponent {
   @ViewChild('conus') conusRef: ElementRef<HTMLCanvasElement>;
-  private _coordinates: number[];
   @Input() set coordinates(value: number[]) {
     this._coordinates = value;
     this._onCreateCone();
   }
 
+  private _coordinates: number[];
+
   constructor(private readonly _cdr: ChangeDetectorRef) {}
 
   private _onCreateCone(): void {
-    const coneTemplate = this.conusRef.nativeElement;
+    const coneTemplate = this.conusRef;
 
-    const positions = new Float32Array([...this._coordinates]);
+    const positions = new Float32Array(this._coordinates);
 
     const scene = new THREE.Scene();
 
@@ -37,7 +38,7 @@ export class ConeViewComponent {
       1,
       10
     );
-    camera.position.set(5, 5, this._coordinates[2] + 2);
+    camera.position.set(6, 3, positions[2] + 2);
 
     const geometry = new THREE.BufferGeometry();
 
@@ -63,9 +64,10 @@ export class ConeViewComponent {
 
     const renderer = new THREE.WebGLRenderer();
     renderer.setSize(600, 270);
-
-    coneTemplate.innerHTML = '';
-    coneTemplate.appendChild(renderer.domElement);
+    if (coneTemplate) {
+      coneTemplate.nativeElement.innerHTML = '';
+      coneTemplate.nativeElement.appendChild(renderer.domElement);
+    }
 
     function animation() {
       cone.rotation.z += 0.01;

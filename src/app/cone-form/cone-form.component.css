@@ -1,5 +1,5 @@
 form {
-  width: 560px;
+  max-width: 560px;
   padding: 20px;
   background-color: #fffafa;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
@@ -21,6 +21,10 @@ form {
 .form__button {
   margin-top: 5px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.form__button:active {
+  transform: translateY(2px);
 }
 
 .form__error {
