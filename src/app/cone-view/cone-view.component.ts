@@ -15,15 +15,14 @@ import * as THREE from 'three';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConeViewComponent {
+  @ViewChild('conus') conusRef: ElementRef<HTMLCanvasElement>;
+  private _coordinates: number[];
   @Input() set coordinates(value: number[]) {
     this._coordinates = value;
     this._onCreateCone();
   }
 
-  @ViewChild('conus') conusRef: ElementRef<HTMLCanvasElement>;
-
   constructor(private readonly _cdr: ChangeDetectorRef) {}
-  private _coordinates: number[];
 
   private _onCreateCone(): void {
     const coneTemplate = this.conusRef.nativeElement;
@@ -63,7 +62,7 @@ export class ConeViewComponent {
     scene.add(cone);
 
     const renderer = new THREE.WebGLRenderer();
-    renderer.setSize(600, 300);
+    renderer.setSize(600, 270);
 
     coneTemplate.innerHTML = '';
     coneTemplate.appendChild(renderer.domElement);
@@ -75,6 +74,6 @@ export class ConeViewComponent {
     }
 
     renderer.setAnimationLoop(animation);
-    this._cdr.markForCheck();
+    this._cdr.detectChanges();
   }
 }

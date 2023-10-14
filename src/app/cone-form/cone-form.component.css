@@ -1,15 +1,17 @@
 form {
-  border: 2px solid #000000;
   width: 560px;
   padding: 20px;
-  background-color: #d3d3d3;
+  background-color: #fffafa;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-weight: 200;
+  box-shadow: 5px 5px 10px gray;
+  margin: auto;
 }
 
 .form__control {
   display: flex;
   flex-direction: column;
+  min-height: 60px;
 }
 
 .form__title {
@@ -19,4 +21,13 @@ form {
 .form__button {
   margin-top: 5px;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.form__error {
+  color: red;
+  font-weight: 100;
+}
+
+input.ng-invalid.ng-touched {
+  border: 2px solid red;
 }

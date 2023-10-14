@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Params } from '../cone.service';
 import { ConeService } from '../cone.service';
 
@@ -17,9 +17,9 @@ export class ConeFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      height: new FormControl(''),
-      radius: new FormControl(''),
-      segments: new FormControl(''),
+      height: new FormControl('', [Validators.required]),
+      radius: new FormControl('', [Validators.required]),
+      segments: new FormControl('', [Validators.required]),
     });
   }
 
