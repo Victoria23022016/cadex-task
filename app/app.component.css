@@ -1,0 +1,11 @@
+.main__title {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 200;
+  margin: auto;
+}
+
+.main__container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
